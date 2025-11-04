@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Long's Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px 10px;
+        }
+
+        img {
+            width: 100px;
+            border-radius: 20%;
+            margin-top: 10px;
+        }
+
+        section {
+            padding: 15px;
+            max-width: 800px;
+            margin: 10px auto;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4a90e2;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        textarea,
+        button {
+            font-size: 1em;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357ab8;
+        }
+
+        .note {
+            background-color: #e9f3ff;
+            padding: 8px;
+            border-left: 3px solid #4a90e2;
+            margin-bottom: 8px;
+        }
+
+        .notification {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Lâm Việt Long</h1>
+        <p>FUV Student | Systems Thinker</p>
+        <img src="https://media.discordapp.net/attachments/869112018819489832/1435101702880493678/image_face.png?ex=690abe1c&is=69096c9c&hm=6fd2e9f8f09f0da8cde11ff4c2d63d089f750624d085ad0142f560612082df94&=&format=webp&quality=lossless"
+            alt="Profile Photo">
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Lâm Long, an undergraduate student at Fulbright University Vietnam. I'm interested in studying
+            philosophy, systems thinking and design.</p>
+        <ol>
+            <li><strong>Education:</strong>Undergraduate Degree in Arts and Media (in progress).</li>
+            <li><strong>Skills:</strong> People Management, Creative Production, etc.</li>
+            <li><strong>Hobbies:</strong> Philosophy, Business, Systems Theory, etc.</li>
+        </ol>
+    </section>
+
+    <section id="portfolio">
+        <h2>My Projects</h2>
+        <ul>
+            <li>Undergraduate Degree</li>
+            <li>English Tutoring Business</li>
+            <li>Personal YouTube Channel</li>
+        </ul>
+    </section>
+
+    <!-- Contact form currently not functional.-->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>For business and other inqueries, please email me at <strong>laurentbois.business@gmail.com</strong>. Or,
+            fill out the form below:</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" rows="3" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <!-- There is no persistent storage (local or server-side) for notes.-->
+    <section id="notebook">
+        <h2>Notebook</h2>
+        <p>If you have any personal notes, write them below: </p>
+        <textarea id="noteInput" rows="3" placeholder="Type your note here..."></textarea><br>
+        <button id="addNoteBtn">Add Note</button>
+        <p class="notification" id="notification"></p>
+        <div id="notes"></div>
+    </section>
+
+    <script>
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const noteInput = document.getElementById('noteInput');
+        const notesContainer = document.getElementById('notes');
+        const notification = document.getElementById('notification');
+
+        addNoteBtn.addEventListener('click', () => {
+            const text = noteInput.value.trim();
+
+            if (text === '') {
+                notification.textContent = 'Please type something first.';
+                return;
+            }
+
+            notification.textContent = '';
+            const note = document.createElement('div');
+            note.classList.add('note');
+            note.textContent = text;
+            notesContainer.appendChild(note);
+
+            noteInput.value = '';
+        });
+    </script>
+
+</body>
+
+</html>
